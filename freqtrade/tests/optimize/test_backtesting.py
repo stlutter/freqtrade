@@ -5,11 +5,9 @@ import math
 from unittest.mock import MagicMock
 import pandas as pd
 from freqtrade import exchange, optimize
-from freqtrade.exchange import Bittrex
 from freqtrade.optimize import preprocess
 from freqtrade.optimize.backtesting import backtest, generate_text_table, get_timeframe
 import freqtrade.optimize.backtesting as backtesting
-
 
 def trim_dictlist(dict_list, num):
     new = {}
@@ -47,8 +45,7 @@ def test_get_timeframe(default_strategy):
 
 def test_backtest(default_strategy, default_conf, mocker):
     mocker.patch.dict('freqtrade.main._CONF', default_conf)
-    exchange._API = Bittrex({'key': '', 'secret': ''})
-
+    exchange._API = exchange.init({'key': '', 'secret': ''})
     data = optimize.load_data(None, ticker_interval=5, pairs=['BTC_ETH'])
     data = trim_dictlist(data, -200)
     results = backtest({'stake_amount': default_conf['stake_amount'],
@@ -60,7 +57,7 @@ def test_backtest(default_strategy, default_conf, mocker):
 
 def test_backtest_1min_ticker_interval(default_strategy, default_conf, mocker):
     mocker.patch.dict('freqtrade.main._CONF', default_conf)
-    exchange._API = Bittrex({'key': '', 'secret': ''})
+    exchange._API = exchange.init({'key': '', 'secret': ''})
 
     # Run a backtesting for an exiting 5min ticker_interval
     data = optimize.load_data(None, ticker_interval=1, pairs=['BTC_UNITEST'])

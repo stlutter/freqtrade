@@ -49,8 +49,8 @@ def plot_analyzed_dataframe(args) -> None:
     tickers = {}
     if args.live:
         logger.info('Downloading pair.')
-        # Init Bittrex to use public API
-        exchange._API = exchange.Bittrex({'key': '', 'secret': ''})
+        # Init ccxt to use public API
+        exchange._API = exchange.init({'key': '', 'secret': ''})
         tickers[pair] = exchange.get_ticker_history(pair, tick_interval)
     else:
         tickers = optimize.load_data(args.datadir, pairs=[pair],
