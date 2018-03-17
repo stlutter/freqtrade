@@ -9,6 +9,7 @@ from freqtrade.optimize.__init__ import make_testdata_path, download_pairs,\
     download_backtesting_testdata, load_tickerdata_file, trim_tickerlist
 from freqtrade.misc import file_dump_json
 from freqtrade.tests.conftest import log_has
+from freqtrade.strategy.strategy import Strategy
 
 # Change this if modifying BTC_UNITEST testdatafile
 _BTC_UNITTEST_LENGTH = 13681
