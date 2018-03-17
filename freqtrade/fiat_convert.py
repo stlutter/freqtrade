@@ -5,6 +5,7 @@ e.g BTC to USD
 
 import logging
 import time
+
 from pymarketcap import Pymarketcap
 
 logger = logging.getLogger(__name__)

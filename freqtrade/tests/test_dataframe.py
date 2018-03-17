@@ -1,8 +1,9 @@
 # pragma pylint: disable=missing-docstring, C0103
 
 import pandas
-from freqtrade.optimize import load_data
+
 from freqtrade.analyze import Analyze
+from freqtrade.optimize import load_data
 from freqtrade.strategy.strategy import Strategy
 
 _pairs = ['BTC_ETH']

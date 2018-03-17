@@ -1,20 +1,16 @@
 # pragma pylint: disable=missing-docstring,W0212,C0103
 import json
-import logging
 import os
 from copy import deepcopy
 from unittest.mock import MagicMock
+
 import pandas as pd
 
 from freqtrade.optimize.__init__ import load_tickerdata_file
 from freqtrade.optimize.hyperopt import Hyperopt, start
+from freqtrade.strategy.strategy import Strategy
 from freqtrade.tests.conftest import default_conf, log_has
 from freqtrade.tests.optimize.test_backtesting import get_args
-
-from freqtrade.strategy.strategy import Strategy
-import freqtrade.optimize.hyperopt as hyperopt
-
-
 
 # Avoid to reinit the same object again and again
 _HYPEROPT = Hyperopt(default_conf())
